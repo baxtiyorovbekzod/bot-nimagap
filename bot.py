@@ -45,7 +45,8 @@ def main():
 
     dispatcher.add_handler(
         handler=MessageHandler(
-            filters=Filters.text('Tilni o\'zgartirish'),
+            filters=Filters.text("🌐 Tilni o'zgartirish"
+                    ),
             callback=change_language
         )
     )

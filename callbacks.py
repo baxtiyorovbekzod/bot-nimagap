@@ -52,12 +52,12 @@ def send_settings(update: Update, context: CallbackContext) -> None:
             keyboard=[
                 [
                     KeyboardButton(
-                        text='🌐 Tilni o\'zgartirish'
+                        text="🌐 Tilni o'zgartirish"
                     )
                 ],
                 [
                     KeyboardButton(
-                        text='🌐 Raqamni o\'zgartirish'
+                        text=" Raqamni o'zgartirish"
                     )
                 ],
                 [
@@ -76,18 +76,25 @@ def feedback(update: Update, context: CallbackContext) -> None:
 def change_language(update: Update, context: CallbackContext) -> None:
     update.message.reply_text(
         text="Tilni tanlang",
-        reply_markup=InlineKeyboardMarkup(
-            inline_keyboard=[
+        reply_markup=ReplyKeyboardMarkup(
+            keyboard=[
                 [
-                    InlineKeyboardButton(
+                    KeyboardButton(
                         text='Uzbek',
                         callback_data='change_lang:uz'
                     ),
-                    InlineKeyboardButton(
+                    KeyboardButton(
                         text='English',
                         callback_data='change_lang:eng'
                     )
-                ]
+                ],
+                [
+                    KeyboardButton(
+                        text='Orqaga',
+                        
+                    ),
+                ],
+            
             ]
         )
     )
