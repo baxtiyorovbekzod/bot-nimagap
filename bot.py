@@ -1,11 +1,11 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
-from config import Config
+from config import TOKEN
 from callbacks import start, send_orders, send_about, change_language, send_settings
 
 
 def main() -> None:
-    updater = Updater(Config.TOKEN)
+    updater = Updater(TOKEN)
     dispatcher = updater.dispatcher
 
     dispatcher.add_handler(
