@@ -1,16 +1,16 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 from config import TOKEN
-from callbacks import start, send_orders, send_about, change_language, send_settings
+from callbacks import start, send_orders, send_about, change_language, send_settings , feedback
 
 
-def main() -> None:
+def main():
     updater = Updater(TOKEN)
     dispatcher = updater.dispatcher
 
     dispatcher.add_handler(
         handler=CommandHandler(
-            command='start',
+            command="start",
             callback=start
         )
     )
@@ -47,6 +47,13 @@ def main() -> None:
         handler=MessageHandler(
             filters=Filters.text('Tilni o\'zgartirish'),
             callback=change_language
+        )
+    )
+
+    dispatcher.add_handler(
+        handler=MessageHandler(
+            filters=Filters.text('✍️ Fikr qoldirish'),
+            callback=feedback
         )
     )
 

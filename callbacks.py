@@ -1,23 +1,20 @@
 from telegram import (
-    Update, 
-    ReplyKeyboardMarkup, 
-    KeyboardButton, 
-    WebAppInfo, 
-    InlineKeyboardMarkup, 
-    InlineKeyboardButton,
+    Update, ReplyKeyboardMarkup, 
+    KeyboardButton, WebAppInfo, 
+    InlineKeyboardMarkup, InlineKeyboardButton,
 )
 from telegram.ext import CallbackContext
 
 
 def start(update: Update, context: CallbackContext) -> None:
     update.message.reply_text(
-        text=f'Assalomu alaykum {update.message.from_user.first_name}!',
+        text=f'Assalomu alaykum {update.message.from_user.full_name}!',
         reply_markup=ReplyKeyboardMarkup(
             keyboard=[
                 [
                     KeyboardButton(
                         text='🛍 Buyurtma berish',
-                        web_app=WebAppInfo(url='https://uzum.uz')
+                        web_app=WebAppInfo(url='https://www.apple.com/')
                     )
                 ],
                 [
@@ -71,10 +68,14 @@ def send_settings(update: Update, context: CallbackContext) -> None:
             ]
         )
     )
-    
+
+def feedback(update: Update, context: CallbackContext) -> None:
+    user_feedback = update.message.text  
+    update.message.reply_text("Fikringiz uchun rahmat! ")
+
 def change_language(update: Update, context: CallbackContext) -> None:
     update.message.reply_text(
-        text='tilni tanlang',
+        text="Tilni tanlang",
         reply_markup=InlineKeyboardMarkup(
             inline_keyboard=[
                 [
@@ -84,7 +85,7 @@ def change_language(update: Update, context: CallbackContext) -> None:
                     ),
                     InlineKeyboardButton(
                         text='English',
-                        callback_data='movie:34'
+                        callback_data='change_lang:eng'
                     )
                 ]
             ]
